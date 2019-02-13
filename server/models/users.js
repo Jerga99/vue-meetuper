@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Meetup = require('./meetups');
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+const config = require('../config/dev')
 
 const userSchema = new Schema({
   avatar: String,
@@ -27,16 +30,29 @@ const userSchema = new Schema({
   joinedMeetups: [{ type: Schema.Types.ObjectId, ref: 'Meetup' }]
 });
 
-module.exports = mongoose.model('User', userSchema );
+userSchema.pre("save", function(next){
+   const user = this;
 
-// Change it to be ASYNC!
-userSchema.pre('save', function(next) {
-  const user = this;
+   bcrypt.genSalt(10, function(err, salt) {
+      if(err){ return next(err);}
 
-  bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(user.password, salt, function(err, hash) {
-        user.password = hash;
-        next();
-    });
-  });
+      bcrypt.hash(user.password, salt, function(err, hash){
+          if(err){ return next(err);}
+
+          user.password = hash;
+          next();
+      });
+   });
 });
+
+//Every user have acces to this methods
+userSchema.methods.comparePassword = function(candidatePassword, callback){
+   bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
+      if(err) {return callback(err);}
+
+      callback(null, isMatch);
+   });
+}
+
+
+module.exports = mongoose.model('User', userSchema );

@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const meetupSchema = new Schema({
   location: { type: String, required: true },
+  processedLocation: String,
   title: { type: String, required: true },
   image: { type: String, required: true },
   description: { type: String, required: true },

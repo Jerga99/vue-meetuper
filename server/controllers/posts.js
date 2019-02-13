@@ -8,7 +8,7 @@ exports.getPosts = function(req, res) {
         .exec((errors, posts) => {
 
     if (errors) {
-      return res.status(422).send({errors: normalizeErrors(errors)});
+      return res.status(422).send({errors});
     }
 
     return res.json(posts);

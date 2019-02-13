@@ -20,9 +20,8 @@ exports.getMeetupById = function(req, res) {
   Meetup.findById(id)
         .populate('meetupCreator', 'name id avatar')
         .populate('category')
-        .populate('joinedPeople', 'name id avatar'
-          {path: 'joinedPeople',
-           options: {limit: 2, sort: {username: -1}}})
+        .populate({path: 'joinedPeople',
+           options: {limit: 5, sort: {username: -1}}})
         .exec((errors, meetup) => {
     if (errors) {
       return res.status(422).send({errors});
