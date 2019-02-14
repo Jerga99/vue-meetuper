@@ -1,0 +1,10 @@
+
+
+###1### Assigment
+1. Iterate categories and display each individual category
+2. Replace harcoded image and name with data of category
+BONUS
+1. Create New Component in Components folder names CategoryItem.vue
+2. Move category template from PageHome to CategoryItem
+3. Iterate CategoryItem and provide to each CategoryItem "category"
+   as a prop
