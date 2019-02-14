@@ -4,7 +4,17 @@
 1. Iterate categories and display each individual category
 2. Replace harcoded image and name with data of category
 BONUS
-1. Create New Component in Components folder names CategoryItem.vue
+1. Create New Component in Components folder named CategoryItem.vue
 2. Move category template from PageHome to CategoryItem
 3. Iterate CategoryItem and provide to each CategoryItem "category"
+   as a prop
+
+
+###2### Assigment
+1. Iterate meetups and display each individual meetup
+2. Replace harcoded image, startDate, title, category name, location, description
+BONUS
+1. Create New Component in Components folder named MeetupItem.vue
+2. Move meetup template from PageHome to MeetupItem
+3. Iterate MeetupItem and provide to each MeetupItem "meetup"
    as a prop
