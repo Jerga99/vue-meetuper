@@ -18,3 +18,9 @@ BONUS
 2. Move meetup template from PageHome to MeetupItem
 3. Iterate MeetupItem and provide to each MeetupItem "meetup"
    as a prop
+
+
+###3### Assigment
+1. In PageMeetupDetail send get request to "/api/v1/meetups/:meetupId"
+2. Get meetup from res data and assign meetup to meetup defined in components data()
+3. Provide meetup data to PageMeetupDetail

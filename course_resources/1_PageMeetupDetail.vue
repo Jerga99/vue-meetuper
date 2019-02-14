@@ -5,25 +5,23 @@
         <div class="container">
           <h2 class="subtitle">
             <!-- TODO: meetup startDate -->
-            <!-- 14th January 2019 -->
             14th January 2019
           </h2>
           <h1 class="title">
             <!-- TODO: title -->
-            <!-- Burger Lovers Meetup -->
             Burger Lovers Meetup
           </h1>
           <article class="media v-center">
             <figure class="media-left">
               <p class="image is-64x64">
-                <!-- meetupCreator avatar -->
+                <!-- OPTIONAL: meetupCreator avatar -->
                 <img class="is-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuqyc3j2s3bL4DIkC8uC9h0rcAdsDXcwJPNh8XHWbLQfHbOpVU">
               </p>
             </figure>
             <div class="media-content">
               <div class="content">
                 <p>
-                  <!-- meetupCreator name -->
+                  <!-- OPTIONAL: meetupCreator name -->
                   Created by <strong>John Doe</strong>
                 </p>
               </div>
@@ -45,7 +43,6 @@
                 <div class="meetup-side-box-date m-b-sm">
                   <p><b>Date</b></p>
                   <!-- TODO: meetup startDate -->
-                  <!-- Long format date -->
                   <p>14th January 2018</p>
                 </div>
                 <div class="meetup-side-box-date m-b-sm">
@@ -93,9 +90,9 @@
               <h3 class="title is-3">About the Meetup</h3>
               <!-- TODO: meetup description -->
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, obcaecati veniam mollitia quisquam asperiores voluptatum corporis est, quaerat quae eaque similique officiis impedit, necessitatibus pariatur. Perspiciatis laudantium ipsum eum, neque.</p>
-              <!-- Join Meetup -->
+              <!-- Join Meetup, We will handle it later (: -->
               <button class="button is-primary">Join In</button>
-              <!-- Not logged In Case, handle later -->
+              <!-- Not logged In Case, handle it later (: -->
               <!-- <button :disabled="true"
                       class="button is-warning">You need authenticate in order to join</button> -->
             </div>
