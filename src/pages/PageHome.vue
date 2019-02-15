@@ -42,23 +42,17 @@
       CategoryItem,
       MeetupItem
     },
-    data () {
-      return {
-        meetups: [],
-        categories: []
+    computed: {
+      meetups () {
+        return this.$store.getters['meetups']
+      },
+      categories () {
+        return this.$store.getters['categories']
       }
     },
     created () {
-      console.log(this.$store)
-      axios.get('/api/v1/meetups')
-        .then(res => {
-          this.meetups = res.data
-        })
-
-      axios.get('/api/v1/categories')
-        .then(res => {
-          this.categories = res.data
-        })
+      this.$store.dispatch('fetchMeetups')
+      this.$store.dispatch('fetchCategories')
     }
   }
 </script>
