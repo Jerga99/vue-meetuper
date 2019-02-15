@@ -49,6 +49,7 @@
       }
     },
     created () {
+      console.log(this.$store)
       axios.get('/api/v1/meetups')
         .then(res => {
           this.meetups = res.data
