@@ -61,7 +61,7 @@
                 Threads
               </p>
               <ul>
-                <li v-for="thread in threads">{{thread.title}}</li>
+                <li v-for="thread in threads" :key="thread._id">{{thread.title}}</li>
               </ul>
               <p class="menu-label">
                 Who is Going
