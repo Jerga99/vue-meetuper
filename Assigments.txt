@@ -34,6 +34,10 @@ BONUS
 1. Create new route of path '/find' that should navigate to PageMeetupFind
 2. On home page change 'All' and 'Find' link for router-link to navigate to PageMeetupFind
 
+####6#### Assigment
+1. Move all functionality from PageMeetupDetail and PageFind to store
+   similiar as we did with our PageHome
+
 
 
 
