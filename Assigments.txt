@@ -25,5 +25,16 @@ BONUS
 2. Get meetup from res data and assign meetup to meetup defined in components data()
 3. Provide meetup data to PageMeetupDetail
 
+
 ###4### Mini Assigment
 1. Fix links in the navbar so name of our application and home link are pointing to our actual home page (:
+
+
+####5#### Assigment
+1. Create new route of path '/find' that should navigate to PageMeetupFind
+2. On home page change 'All' and 'Find' link for router-link to navigate to PageMeetupFind
+
+
+
+
+
