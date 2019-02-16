@@ -15,6 +15,9 @@ export default new Vuex.Store({
   },
   // Getters are like computed properties. Simple functions to get a state
   getters: {
+    testingGetter () {
+      return 55
+    }
   },
   // Actions are like methods in vue componenet. They should not mutate the state.
   // Very good spot to fetch a data. Action call usualy should resolve into data.
