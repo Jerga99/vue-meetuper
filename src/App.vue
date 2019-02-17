@@ -32,7 +32,7 @@ export default {
 }
 
 .page-wrapper {
-  height: 55vh;
+  min-height: 55vh;
 }
 
 .bold {
