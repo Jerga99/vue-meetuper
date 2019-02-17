@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="false">
     <AppHero />
     <div class="container">
       <section class="section">
@@ -30,6 +30,9 @@
         </div>
       </section>
     </div>
+  </div>
+  <div v-else>
+    <AppSpinner />
   </div>
 </template>
 
