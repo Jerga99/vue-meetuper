@@ -40,7 +40,18 @@ BONUS
 3. PageLogin path is "/login"
 4. Update Links in navbar
 
+####7#### Assignment
+1. Bind data from inputs to form object
+2. Create "login" function in PageLogin
+3. When form is submitted call "login" function and console.log form data
 
+4. Create "register" function in PageRegister
+5. When form is submitted call "register" function and console.log form data
 
-
+BONUS:
+1. Create new module called "auth"
+2. Register module in store/index.js
+3. Create 2 methods, loginWithEmailAndPassword and registerUser
+4. dispatch these functions in login and register functions and provide formData inside
+5. move console.logs from your login and register to module functions
 
