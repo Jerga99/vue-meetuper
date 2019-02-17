@@ -3,9 +3,18 @@ import Vuex from 'vuex'
 
 import axios from 'axios'
 
+import meetups from './modules/meetups'
+import threads from './modules/threads'
+import categories from './modules/categories'
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  modules: {
+    meetups,
+    categories,
+    threads
+  },
   // In state we are keeping our data we are sharing with our components
   state: {
     meetups: [],
@@ -15,9 +24,6 @@ export default new Vuex.Store({
   },
   // Getters are like computed properties. Simple functions to get a state
   getters: {
-    testingGetter () {
-      return 55
-    }
   },
   // Actions are like methods in vue componenet. They should not mutate the state.
   // Very good spot to fetch a data. Action call usualy should resolve into data.
