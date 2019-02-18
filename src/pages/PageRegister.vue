@@ -57,6 +57,7 @@
                          autocomplete="">
                   <div v-if="$v.form.avatar.$error" class="form-error">
                     <span v-if="!$v.form.avatar.url" class="help is-danger">Url format is not valid!</span>
+                    <span v-if="!$v.form.avatar.supportedFileType" class="help is-danger">Selected file type is not valid!</span>
                   </div>
                 </div>
               </div>
@@ -104,6 +105,7 @@
 
 <script>
   import { required, email, minLength, url, sameAs } from 'vuelidate/lib/validators'
+  import { supportedFileType } from '@/helpers/validators'
   export default {
     data () {
       return {
@@ -130,7 +132,8 @@
           email
         },
         avatar: {
-          url
+          url,
+          supportedFileType
         },
         password: {
           required,
