@@ -1,4 +1,5 @@
 const User = require('../models/users');
+const passport = require('passport');
 
 exports.getUsers = function(req, res) {
   User.find({})
@@ -50,3 +51,37 @@ exports.register = function(req, res) {
     return res.json(savedUser)
   })
 }
+
+exports.login = function (req, res) {
+  const { email, password } = req.body
+
+  if (!email) {
+    return res.status(422).json({
+      errors: {
+        email: 'is required'
+      }
+    })
+  }
+
+  if (!password) {
+    return res.status(422).json({
+      errors: {
+        password: 'is required'
+      }
+    })
+  }
+
+  return passport.authenticate('local', (err, passportUser) => {
+
+  })
+}
+
+
+
+
+
+
+
+
+
+

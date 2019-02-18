@@ -60,3 +60,12 @@ BONUS:
 2. You don't need provide required to avatar
 3. Display also error messages
 
+####9#### Assignment
+1. Create login route of path "/login" similiar to register
+2. Provide login controller to login route
+3. Create simple functionality of login controller
+4. Implement simple response and try route in postman,
+   don't forget to restart your node server/
+
+
+
