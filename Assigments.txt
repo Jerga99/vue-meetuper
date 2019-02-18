@@ -55,3 +55,8 @@ BONUS:
 4. dispatch these functions in login and register functions and provide formData inside
 5. move console.logs from your login and register to module functions
 
+####8#### Assignment
+1. Provide required validators and blur to register form inputs.
+2. You don't need provide required to avatar
+3. Display also error messages
+
