@@ -73,5 +73,12 @@ BONUS:
 3. after succesful register redirect to login page
 4. in case of error just console log error
 
+####11#### Assignment
+1. Create "logout" action in auth module
+2. send post request to '/api/v1/users/logout'
+3. after succesful logout "commit" setAuthUser of null
+4. in case of error just console log error
+
+
 
 
