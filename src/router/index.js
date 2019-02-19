@@ -29,13 +29,7 @@ const router = new Router({
       path: '/meetups/secret',
       name: 'PageSecret',
       component: PageSecret,
-      beforeEnter (to, from, next) {
-        if (store.getters['auth/isAuthenticated']) {
-          next ()
-        } else {
-          next({name: 'PageNotAuthenticated'})
-        }
-      }
+      meta: {onlyAuthUser: true}
     },
     {
       path: '/meetups/:id',
@@ -65,5 +59,27 @@ const router = new Router({
   ],
   mode: 'history'
 })
+
+
+router.beforeEach((to, from, next) => {
+  store.dispatch('auth/getAuthUser')
+    .then(authUser => {
+      if (to.meta.onlyAuthUser) {
+        if (store.getters['auth/isAuthenticated']) {
+          next()
+        } else {
+          next({name: 'PageNotAuthenticated'})
+        }
+      } else {
+        next()
+      }
+    })
+})
+
+
+
+
+
+
 
 export default router

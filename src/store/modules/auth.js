@@ -35,7 +35,10 @@ export default {
           return err
         })
     },
-    getAuthUser ({commit}) {
+    getAuthUser ({commit, getters}) {
+      const authUser = getters['authUser']
+      if (authUser) { return Promise.resolve(authUser) }
+
       return axios.get('/api/v1/users/me')
         .then((res) => {
           const user = res.data
