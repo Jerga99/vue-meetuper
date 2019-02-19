@@ -3,7 +3,8 @@ import axios from 'axios'
 export default {
   namespaced: true,
   state: {
-    user: null
+    user: null,
+    isAuthResolved: false
   },
   getters: {
     authUser (state) {
@@ -39,10 +40,12 @@ export default {
         .then((res) => {
           const user = res.data
           commit('setAuthUser', user)
+          commit('setAuthState', true)
           return user
         })
         .catch(err => {
           commit('setAuthUser', null)
+          commit('setAuthState', true)
           return err
         })
     }
@@ -50,6 +53,9 @@ export default {
   mutations: {
     setAuthUser (state, user) {
       return state.user = user
+    },
+    setAuthState (state, authState) {
+      return state.isAuthResolved = authState
     }
   }
 }
