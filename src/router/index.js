@@ -1,12 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store'
 
 import PageHome from '@/pages/PageHome'
 import PageMeetupDetail from '@/pages/PageMeetupDetail'
 import PageMeetupFind from '@/pages/PageMeetupFind'
 import PageLogin from '@/pages/PageLogin'
 import PageRegister from '@/pages/PageRegister'
+import PageSecret from '@/pages/PageSecret'
 import PageNotFound from '@/pages/PageNotFound'
+import PageNotAuthenticated from '@/pages/PageNotAuthenticated'
 
 Vue.use(Router)
 
@@ -23,6 +26,18 @@ const router = new Router({
       component: PageMeetupFind
     },
     {
+      path: '/meetups/secret',
+      name: 'PageSecret',
+      component: PageSecret,
+      beforeEnter (to, from, next) {
+        if (store.getters['auth/isAuthenticated']) {
+          next ()
+        } else {
+          next({name: 'PageNotAuthenticated'})
+        }
+      }
+    },
+    {
       path: '/meetups/:id',
       name: 'PageMeetupDetail',
       component: PageMeetupDetail
@@ -36,6 +51,11 @@ const router = new Router({
       path: '/register',
       name: 'PageRegister',
       component: PageRegister
+    },
+    {
+      path: '/401',
+      name: 'PageNotAuthenticated',
+      component: PageNotAuthenticated
     },
     {
       path: '*',
