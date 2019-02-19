@@ -1,5 +1,9 @@
 const Meetup = require('../models/meetups');
 
+exports.getSecret = function (req, res) {
+  return res.json({secret: 'I am secret Message'})
+}
+
 exports.getMeetups = function(req, res) {
   Meetup.find({})
         .populate('category')
