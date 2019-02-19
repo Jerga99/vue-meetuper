@@ -39,7 +39,13 @@ export default {
       const authUser = getters['authUser']
       if (authUser) { return Promise.resolve(authUser) }
 
-      return axios.get('/api/v1/users/me')
+      const config = {
+        headers: {
+          'Cache-Control': 'no-cache'
+        }
+      }
+
+      return axios.get('/api/v1/users/me', config)
         .then((res) => {
           const user = res.data
           commit('setAuthUser', user)

@@ -79,6 +79,14 @@ BONUS:
 3. after succesful logout "commit" setAuthUser of null
 4. in case of error just console log error
 
+####12#### Assignment
+1. Create "meta" property "onlyGuestUser" on PageRegister and PageLogin
+   and set it to be true
+2. Add "else if" statement after if "to.meta.onlyAuthUser"
+3. If user is authenticated navigate to home page
+4. If User is not authenticated navigate to requested page
+
+
 
 
 
