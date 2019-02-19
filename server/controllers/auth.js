@@ -1,5 +1,5 @@
 
-
+// Auth Middleware
 exports.onlyAuthUser = function (req, res, next) {
   if (req.isAuthenticated()) {
     return next()
