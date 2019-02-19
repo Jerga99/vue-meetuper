@@ -67,5 +67,11 @@ BONUS:
 4. Implement simple response and try route in postman,
    don't forget to restart your node server/
 
+####10#### Assignment
+1. Finish register user in auth modules
+2. send post request to '/api/v1/users/register'
+3. after succesful register redirect to login page
+4. in case of error just console log error
+
 
 
