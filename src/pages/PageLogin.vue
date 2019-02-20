@@ -86,9 +86,8 @@
         this.$v.form.$touch()
         this.$store.dispatch('auth/loginWithEmailAndPassword', this.form)
           .then(() => this.$router.push('/'))
-          .catch((err) => {
-            const error = err.response.data.errors.message
-            this.$toasted.error(error, {duration: 5000})
+          .catch((errorMessage) => {
+            this.$toasted.error(errorMessage, {duration: 5000})
           })
       }
     }

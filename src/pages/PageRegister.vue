@@ -122,10 +122,10 @@
     validations: {
       form: {
         username: {
-          required
+          // required
         },
         name: {
-          required
+          // required
         },
         email: {
           required,
@@ -150,7 +150,9 @@
         this.$v.form.$touch()
         this.$store.dispatch('auth/registerUser', this.form)
           .then(() => this.$router.push('/login'))
-          .catch(err => console.log(err))
+          .catch(errMessage => {
+            this.$toasted.error(errMessage, {duration: 5000})
+          })
       }
     }
   }
