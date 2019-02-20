@@ -99,7 +99,7 @@ exports.login = function (req, res, next) {
 
     } else {
       return res.status(422).send({errors: {
-        'message': 'Invalid password or email'
+        'authentication': 'Ooops, something went wrong!'
       }})
     }
 
