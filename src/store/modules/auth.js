@@ -41,14 +41,21 @@ export default {
       return axios.post('/api/v1/users/register', userData)
     },
     logout ({commit}) {
-      return axios.post('/api/v1/users/logout')
-        .then(() => {
-          commit('setAuthUser', null)
-          return true
-        })
-        .catch(err => {
-          return err
-        })
+      // For Session Authnetication !
+      // return axios.post('/api/v1/users/logout')
+      //   .then(() => {
+      //     commit('setAuthUser', null)
+      //     return true
+      //   })
+      //   .catch(err => {
+      //     return err
+      //   })
+
+      return new Promise((resolve, reject) => {
+        localStorage.removeItem('meetuper-jwt')
+        commit('setAuthUser', null)
+        resolve(true)
+      })
     },
     getAuthUser ({commit, getters}) {
       const authUser = getters['authUser']
