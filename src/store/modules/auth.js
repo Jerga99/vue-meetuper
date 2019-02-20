@@ -13,8 +13,6 @@ function checkTokenValidity (token) {
   return false
 }
 
-
-
 export default {
   namespaced: true,
   state: {
