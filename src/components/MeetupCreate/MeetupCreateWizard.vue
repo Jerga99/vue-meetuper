@@ -5,16 +5,10 @@
     </div>
     <!-- Form Steps -->
     <keep-alive>
-      <MeetupLocation v-if="currentStep === 1"
-                      @stepUpdated="mergeStepData"
-                      ref="currentComponent" />
-      <MeetupDetail v-if="currentStep === 2"
-                    @stepUpdated="mergeStepData"
-                    ref="currentComponent" />
-      <MeetupDescription v-if="currentStep === 3"
-                         @stepUpdated="mergeStepData"
-                         ref="currentComponent" />
-      <MeetupConfirmation v-if="currentStep === 4" :meetupToCreate="form" />
+      <component :is="currentComponent"
+                 @stepUpdated="mergeStepData"
+                 ref="currentComponent"
+                 :meetupToCreate="form" />
     </keep-alive>
 
     <progress class="progress"
@@ -51,8 +45,8 @@
     data () {
       return {
         currentStep: 1,
-        allStepsCount: 4,
         canProceed: false,
+        formSteps: ['MeetupLocation', 'MeetupDetail', 'MeetupDescription', 'MeetupConfirmation'],
         form: {
           location: null,
           title: null,
@@ -67,8 +61,14 @@
       }
     },
     computed: {
+      allStepsCount () {
+        return this.formSteps.length
+      },
       currentProgress () {
         return (100 / this.allStepsCount) * this.currentStep
+      },
+      currentComponent () {
+        return this.formSteps[this.currentStep - 1]
       }
     },
     methods: {
