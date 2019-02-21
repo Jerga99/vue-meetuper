@@ -92,5 +92,13 @@ Tip: Use props (:
 2. Validate inputs in our forms
 Tip: Use blur (:
 
+####14#### Assignment
+1. Create new action in meetups module called "createMeetup"
+2. In "createMeetup" expect to receive your meetup data and console.log them out
+3. In "MeetupCreateWizard emit event "meetupConfirmed"" when confirm is pressed
+   and send meetup along
+4. In "PageMeetupCreate" listen to the event and dispatch "createMeetup" you
+   created before. Don't forget to send meetup.
+
 
 

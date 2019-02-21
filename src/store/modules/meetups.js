@@ -25,6 +25,10 @@ export default {
           commit('setItem', {resource: 'meetups', item: meetup}, {root: true})
           return state.item
         })
+    },
+    createMeetup (context, meetupToCreate) {
+      // Make a request to API to create meetup
+      console.log(meetupToCreate)
     }
   }
 }
