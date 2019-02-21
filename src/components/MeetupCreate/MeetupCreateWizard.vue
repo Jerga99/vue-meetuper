@@ -6,11 +6,14 @@
     <!-- Form Steps -->
     <keep-alive>
       <MeetupLocation v-if="currentStep === 1"
-                      @stepUpdated="mergeStepData" />
+                      @stepUpdated="mergeStepData"
+                      ref="currentComponent" />
       <MeetupDetail v-if="currentStep === 2"
-                    @stepUpdated="mergeStepData" />
+                    @stepUpdated="mergeStepData"
+                    ref="currentComponent" />
       <MeetupDescription v-if="currentStep === 3"
-                         @stepUpdated="mergeStepData" />
+                         @stepUpdated="mergeStepData"
+                         ref="currentComponent" />
       <MeetupConfirmation v-if="currentStep === 4" :meetupToCreate="form" />
     </keep-alive>
 
@@ -75,6 +78,12 @@
       },
       moveToNextStep () {
         this.currentStep++
+
+        // https://vuejs.org/v2/api/#Vue-nextTick
+        // Defer the callback to be executed after the next DOM update cycle.
+        this.$nextTick(() => {
+          this.canProceed = !this.$refs['currentComponent'].$v.$invalid
+        })
       },
       moveToPreviousStep () {
         this.currentStep--
