@@ -86,7 +86,11 @@ BONUS:
 3. If user is authenticated navigate to home page
 4. If User is not authenticated navigate to requested page
 
-
+####13#### Assignment
+1. Update MeetupConfirmation with real data from our form
+Tip: Use props (:
+2. Validate inputs in our forms
+Tip: Use blur (:
 
 
 

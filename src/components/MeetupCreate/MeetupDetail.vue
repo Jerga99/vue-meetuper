@@ -3,6 +3,7 @@
     <div class="field">
       <label class="title m-b-sm">Choose Title</label>
       <input v-model="form.title"
+             @blur="$v.form.title.$touch()"
              class="input"
              type="text"
              placeholder="Enter Title">
@@ -13,6 +14,7 @@
     <div class="field">
       <label class="title m-b-sm">Starts At</label>
       <input v-model="form.startDate"
+             @blur="$v.form.startDate.$touch()"
              class="input"
              type="text"
              placeholder="Starts At">
@@ -23,6 +25,7 @@
     <div class="field">
       <label class="title m-b-sm">From</label>
       <input v-model="form.timeFrom"
+             @blur="$v.form.timeFrom.$touch()"
              class="input"
              type="text"
              placeholder="Time From">
@@ -30,6 +33,7 @@
     <div class="field">
       <label class="title m-b-sm">To</label>
       <input v-model="form.timeTo"
+             @blur="$v.form.timeTo.$touch()"
              class="input"
              type="text"
              placeholder="Time to">
@@ -40,6 +44,7 @@
         <div class="select">
           <!-- TODO: Get Here Categories -->
           <select v-model="form.category"
+                  @blur="$v.form.category.$touch()"
                   @change="emitFormData">
             <option v-for="category of categories"
                     :value="category"
