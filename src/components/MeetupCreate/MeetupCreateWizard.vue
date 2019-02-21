@@ -23,6 +23,7 @@
               class="button is-primary m-r-sm">Back</button>
       <button v-if="currentStep !== allStepsCount"
               @click="moveToNextStep"
+              :disabled="!canProceed"
               class="button is-primary">Next</button>
       <button v-else
               class="button is-primary">Confirm</button>
@@ -48,6 +49,7 @@
       return {
         currentStep: 1,
         allStepsCount: 4,
+        canProceed: false,
         form: {
           location: null,
           title: null,
@@ -67,14 +69,16 @@
       }
     },
     methods: {
-      mergeStepData (stepData) {
-        this.form = {...this.form, ...stepData}
+      mergeStepData (step) {
+        this.form = {...this.form, ...step.data}
+        this.canProceed = step.isValid
       },
       moveToNextStep () {
         this.currentStep++
       },
       moveToPreviousStep () {
         this.currentStep--
+        this.canProceed = true
       }
     }
   }
