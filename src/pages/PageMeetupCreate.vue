@@ -14,6 +14,16 @@
   export default {
     components: {
       MeetupCreateWizard
+    },
+    computed: {
+      categories () {
+        return this.$store.state.categories.items
+      }
+    },
+    created () {
+      if (this.categories.length === 0) {
+        this.$store.dispatch('categories/fetchCategories')
+      }
     }
   }
 </script>
