@@ -52,6 +52,46 @@ exports.createMeetup = function(req, res) {
   })
 }
 
+exports.joinMeetup = function (req, res) {
+  const user = req.user;
+  const {id} = req.params;
+
+  Meetup.findById(id, (errors, meetup) => {
+    if (errors) {
+      return res.status(422).send({errors})
+    }
+
+    meetup.joinedPeople.push(user);
+    meetup.joinedPeopleCount++;
+
+    return Promise.all(
+      [meetup.save(),
+      User.updateOne({ _id: user.id }, { $push: { joinedMeetups: meetup }})])
+      .then(result => res.json({id}))
+      .catch(errors => res.status(422).send({errors}))
+  })
+}
+
+exports.leaveMeetup = function (req, res) {
+  const user = req.user;
+  const {id} = req.params;
+
+  Promise.all(
+    [Meetup.updateOne({ _id: id }, { $pull: { joinedPeople: user.id }, $inc: {joinedPeopleCount: -1}}),
+     User.updateOne({ _id: user.id }, { $pull: { joinedMeetups: id }})])
+    .then(result => res.json({id}))
+    .catch(errors => res.status(422).send({errors}))
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
