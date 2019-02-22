@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import axios from 'axios'
 import axiosInstance from '@/services/axios'
 
@@ -38,7 +39,7 @@ export default {
       const user = rootState.auth.user
 
       return axiosInstance.post(`/api/v1/meetups/${meetupId}/join`)
-        .then(res => {
+        .then(() => {
           dispatch('auth/addMeetupToAuthUser', meetupId, {root: true})
 
           const joinedPeople = state.item.joinedPeople

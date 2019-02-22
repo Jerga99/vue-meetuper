@@ -1,4 +1,5 @@
 const Meetup = require('../models/meetups');
+const User = require('../models/users');
 
 exports.getSecret = function (req, res) {
   return res.json({secret: 'I am secret Message'})
