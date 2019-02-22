@@ -26,7 +26,9 @@
         </div>
         <div class="is-pulled-right">
           <!-- We will handle this later (: -->
-          <button v-if="isMember" class="button is-danger">Leave Meetup</button>
+          <button v-if="isMember"
+                  @click="leaveMeetup"
+                  class="button is-danger">Leave Meetup</button>
         </div>
       </div>
     </section>
@@ -172,6 +174,9 @@
       ...mapActions('threads', ['fetchThreads']),
       joinMeetup () {
         this.$store.dispatch('meetups/joinMeetup', this.meetup._id)
+      },
+      leaveMeetup () {
+        this.$store.dispatch('meetups/leaveMeetup', this.meetup._id)
       }
     }
   }
