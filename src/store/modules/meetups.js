@@ -36,6 +36,7 @@ export default {
         .then(res => res.data)
     },
     joinMeetup ({state, rootState, commit, dispatch}, meetupId) {
+      // We were just debugging in this lecture (:
       const user = rootState.auth.user
 
       return axiosInstance.post(`/api/v1/meetups/${meetupId}/join`)
