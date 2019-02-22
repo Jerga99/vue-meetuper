@@ -145,6 +145,20 @@
       }),
       meetupCreator () {
         return this.meetup.meetupCreator || {}
+      },
+      isAuthenticated () {
+        return this.$store.getters['auth/isAuthenticated']
+      },
+      isMeetupOwner () {
+        return this.$store.getters['auth/isMeetupOwner'](this.meetupCreator._id)
+      },
+      isMember () {
+        return this.$store.getters['auth/isMember'](this.meetup._id)
+      },
+      canJoin () {
+        return !this.isMeetupOwner &&
+                this.isAuthenticated &&
+               !this.isMember
       }
     },
     created () {
