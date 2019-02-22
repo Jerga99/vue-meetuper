@@ -81,7 +81,9 @@
             <div class="content is-medium">
               <h3 class="title is-3">About the Meetup</h3>
               <p>{{meetup.description}}</p>
-              <button v-if="canJoin" class="button is-primary">Join In</button>
+              <button v-if="canJoin"
+                      @click="joinMeetup"
+                      class="button is-primary">Join In</button>
               <button v-if="!isAuthenticated"
                       :disabled="true"
                       class="button is-warning">You need authenticate in order to join</button>
@@ -167,7 +169,10 @@
     },
     methods: {
       ...mapActions('meetups', ['fetchMeetupById']),
-      ...mapActions('threads', ['fetchThreads'])
+      ...mapActions('threads', ['fetchThreads']),
+      joinMeetup () {
+        this.$store.dispatch('meetups/joinMeetup', this.meetup._id)
+      }
     }
   }
 </script>
