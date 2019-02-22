@@ -28,6 +28,10 @@
     methods: {
       createMeetup (meetupToCreate) {
         this.$store.dispatch('meetups/createMeetup', meetupToCreate)
+          .then(createdMeetup => {
+            this.$router.push(`/meetups/${createdMeetup._id}`)
+          })
+          .catch(err => console.log(err))
       }
     }
   }
