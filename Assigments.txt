@@ -101,11 +101,24 @@ Tip: Use blur (:
    created before. Don't forget to send meetup.
 
 
-####14#### Assignment
+####15#### Assignment
 1. Create new action in threads module called "postThread"
 2. In "postThread" expect to receive your thread title and meetup Id
 3. Send a post request to '/api/v1/threads'
 4. Create thread and inspect network tab in browser, make sure you are sending request. It should fail
 
+####16#### Assignment
+1. Create "text" variable in data and bind it to text area
+2. Create new action in threads module called "sendPost"
+3. In "sendPost" action expect to receive your post text and thread Id
+NOTE: You need to send thread id as prop to "PostCreate"
+4. In "sendPost" action create "post" object containing "text" and "thread"
+5. Console log out "post" object
+6. Send a post request to '/api/v1/posts', send along "post" object
+7. In PostCreate component when button "Send" is clicked dispatch action
+   "sendPost" , you should get error in network tab but you should see console
+   of your post
+
+BONUS: Disable "Send" button when you have empty text in textarea
 
 
