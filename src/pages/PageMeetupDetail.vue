@@ -90,6 +90,7 @@
                       :disabled="true"
                       class="button is-warning">You need authenticate in order to join</button>
               <ThreadCreateModal v-if="isMember || isMeetupOwner"
+                                 @threadSubmitted="createThread"
                                  :btnTitle="`Welcome ${authUser.username}, Start a new thread`"
                                  :title="'Create Thread'" />
             </div>
@@ -185,6 +186,11 @@
       },
       leaveMeetup () {
         this.$store.dispatch('meetups/leaveMeetup', this.meetup._id)
+      },
+      createThread ({title, done}) {
+        console.log(title)
+        debugger
+        done()
       }
     }
   }
