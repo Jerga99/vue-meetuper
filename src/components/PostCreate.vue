@@ -1,4 +1,5 @@
 <template>
+  <!-- <div v-with-warning:red.prevent="'What a nice day (:'"> </div> -->
   <form class="post-create">
     <div class="field">
       <textarea class="textarea textarea-post"
@@ -10,8 +11,9 @@
 </template>
 
 <script>
+  import withWarning from '@/directives/withWarning'
   export default {
-
+    directives: {withWarning}
   }
 </script>
 
