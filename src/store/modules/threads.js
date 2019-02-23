@@ -1,4 +1,5 @@
 import axios from 'axios'
+import axiosInstance from '@/services/axios'
 
 export default {
   namespaced: true,
@@ -14,6 +15,10 @@ export default {
           commit('setItems', {resource: 'threads', items: threads}, {root: true})
           return state.items
         })
+    },
+    postThread ({commit, state}, {title, meetupId}) {
+      console.log(title, meetupId)
+      return axiosInstance.post('/api/v1/threads')
     }
   }
 }

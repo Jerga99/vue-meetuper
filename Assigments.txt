@@ -101,4 +101,11 @@ Tip: Use blur (:
    created before. Don't forget to send meetup.
 
 
+####14#### Assignment
+1. Create new action in threads module called "postThread"
+2. In "postThread" expect to receive your thread title and meetup Id
+3. Send a post request to '/api/v1/threads'
+4. Create thread and inspect network tab in browser, make sure you are sending request. It should fail
+
+
 
