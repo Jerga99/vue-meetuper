@@ -3,7 +3,7 @@
     <h3 class="title is-3">Threads</h3>
     <div v-for="thread in threads" :key="thread._id" class="box">
       <h4 id="const" class="title is-3">{{thread.title}}</h4>
-      <PostCreate v-if="canMakePost" />
+      <PostCreate v-if="canMakePost" :threadId="thread._id" />
       <!-- Posts START -->
       <article v-for="post in thread.posts" :key="post._id" class="media post-item">
         <figure class="media-left is-rounded user-image">

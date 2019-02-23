@@ -30,6 +30,12 @@ export default {
           commit('addItemToArray', {item: createdThread, index, resource: 'threads'}, {root: true})
           return createdThread
         })
+    },
+    sendPost ({commit, state, dispatch}, {text, threadId}) {
+      const post = {text, thread: threadId}
+      console.log(post)
+
+      return axiosInstance.post('/api/v1/posts', post)
     }
   }
 }
