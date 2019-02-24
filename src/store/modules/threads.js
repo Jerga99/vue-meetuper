@@ -43,6 +43,7 @@ export default {
         })
     },
     addPostToThread ({commit, state}, {post, threadId}) {
+      debugger
       const threadIndex = state.items.findIndex(thread => thread._id === threadId)
 
       if (threadIndex > -1) {
