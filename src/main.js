@@ -12,6 +12,8 @@ import AppSpinner from './components/shared/AppSpinner'
 
 import moment from 'moment'
 
+import customPlugin from '@/plugins/customPlugin'
+
 Vue.config.productionTip = false
 
 Vue.component('AppHero', AppHero)
@@ -20,6 +22,7 @@ Vue.component('AppSpinner', AppSpinner)
 
 Vue.use(vuelidate)
 Vue.use(Toasted)
+Vue.use(customPlugin)
 
 Vue.filter('capitalize', function (value) {
   if (value && typeof value === 'string') {
