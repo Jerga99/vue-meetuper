@@ -23,7 +23,6 @@ export default new Vuex.Store({
       state[resource].item = item
     },
     addItemToArray (state, {item, index, resource}) {
-      debugger
       Vue.set(state[resource].items, index, item)
     }
   }

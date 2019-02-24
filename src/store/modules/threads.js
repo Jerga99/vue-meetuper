@@ -24,7 +24,6 @@ export default {
 
       return axiosInstance.post('/api/v1/threads', thread)
         .then(res => {
-          debugger
           const createdThread = res.data
           const index = state.items.length
 
@@ -43,7 +42,6 @@ export default {
         })
     },
     addPostToThread ({commit, state}, {post, threadId}) {
-      debugger
       const threadIndex = state.items.findIndex(thread => thread._id === threadId)
 
       if (threadIndex > -1) {

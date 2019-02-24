@@ -65,7 +65,6 @@
       threadSubmitted () {
         const {title} = this.form
         this.$emit('threadSubmitted', {title, done: () => {
-          debugger
           this.form.title = ''
           this.isOpen = false
         }})
