@@ -122,3 +122,43 @@ NOTE: You need to send thread id as prop to "PostCreate"
 BONUS: Disable "Send" button when you have empty text in textarea
 
 
+####17#### Assignment
+1. in "sendPost" action chain "then" function to axiosInstance.post
+
+2. Get data from response and assign it to "createdPost" variable
+
+3. dispatch('addPostToThread', {post: createdPost, threadId})
+
+4. Create new action "addPostToThread" where you can expect to get "post"
+   and "threadId"
+
+5. in "addPostToThread" find index of thread where you want to push your post
+NOTE: You have threadId so you can find thread you are looking for in state.items
+
+6. Check if thread was found (if index > -1) and get all of the posts from
+   thread and assign them to variable "posts"
+NOTE: If you have index of thread you can get posts from state by doing
+      something like this: state.items[threadIndex].posts
+7. push your created post to "posts"
+
+8. commit mutation "savePostToThread" , send there your posts and threadId
+NOTE: Create mutation "savePostToThread" and expect to get posts and index
+
+9. in "savePostToThread" use Vue.set and set your new posts to thread
+E.G: Vue.set(state.items[index], 'posts', posts)
+
+10. back in "sendPost" action return "createdPost" in the end of "then"
+
+NOTE: After post is created we want to add post to a thread, so we need to
+ first find thread in items and then push created post to found thread.
+
+
+
+
+
+
+
+
+
+
+

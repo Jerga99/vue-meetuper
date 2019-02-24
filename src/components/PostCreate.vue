@@ -32,6 +32,9 @@
     methods: {
       sendPost () {
         this.$store.dispatch('threads/sendPost', {text: this.text, threadId: this.threadId})
+        .then(() => {
+          this.text = ''
+        })
       }
     }
   }
