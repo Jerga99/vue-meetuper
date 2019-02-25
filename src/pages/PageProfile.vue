@@ -15,7 +15,7 @@
               <span class="title is-bold">{{user.name}}</span>
               <br/>
               <!-- Here will be user update functionality -->
-              <UserUpdateModal />
+              <UserUpdateModal :authUser="user" />
               <br/>
             </p>
             <!-- TODO: User info Here if any -->

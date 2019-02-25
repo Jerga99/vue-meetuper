@@ -12,19 +12,23 @@
           <form>
             <div class="field">
               <label class="title">Name</label>
-              <input class="input">
+              <input v-model="user.name"
+                     class="input">
             </div>
             <div class="field">
               <label class="title">Username</label>
-              <input class="input">
+              <input v-model="user.username"
+                     class="input">
             </div>
             <div class="field">
               <label class="title">Avatar</label>
-              <input class="input">
+              <input v-model="user.avatar"
+                     class="input">
             </div>
             <div class="field">
               <label class="title">Info</label>
-              <input class="input">
+              <input v-model="user.info"
+                     class="input">
             </div>
           </form>
         </section>
@@ -39,9 +43,16 @@
 
 <script>
   export default {
+    props: {
+      authUser: {
+        required: true,
+        type: Object
+      }
+    },
     data () {
       return {
-        isOpen: false
+        isOpen: false,
+        user: {...this.authUser}
       }
     }
   }

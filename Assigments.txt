@@ -203,5 +203,15 @@ TIP: You can assign it like this: Object.assign(state, {}, stats)
 3. Use this component instead of button "Update Info"
 4. Create functionality to open and close this modal
 
+####23#### Assignment
+1. Get authenticated user to UserUpdateModal component and bind it to our inputs
+2. Check Modal if user data are displayed in form
+
+PREFERABLE WAY:
+1. pass "user" as "authUser" prop to UserUpdateModal from PageProfile
+2. in data() destructurize "authUser" and assign it to "user" variable
+   so we will create copy of user
+3. bind user to inputs
+
 
 
