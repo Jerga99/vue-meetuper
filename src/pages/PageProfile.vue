@@ -125,7 +125,12 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    created () {
+      this.$store.dispatch('stats/fetchUserStats')
+        .then(stats => console.log(stats))
+    }
+  }
 </script>
 
 <style scoped>

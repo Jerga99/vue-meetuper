@@ -5,6 +5,7 @@ import meetups from './modules/meetups'
 import threads from './modules/threads'
 import categories from './modules/categories'
 import auth from './modules/auth'
+import stats from './modules/stats'
 
 Vue.use(Vuex)
 
@@ -13,7 +14,8 @@ export default new Vuex.Store({
     meetups,
     categories,
     threads,
-    auth
+    auth,
+    stats
   },
   mutations: {
     setItems (state, {resource, items}) {

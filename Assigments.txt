@@ -160,7 +160,33 @@ NOTE: After post is created we want to add post to a thread, so we need to
 4. Update link in navbar to navigate to profile page if clicked
 5. Navigate to this page (:
 
+####19#### Assignment
+1. Create new module called "stats"
+2. Provide "stats" module to store in store/index.js
+3. Specify these data in "stats" module state
 
+   meetups: {
+      data: [],
+      count: null,
+    },
+    threads: {
+      data: [],
+      count: null,
+    },
+    posts: {
+      data: [],
+      count: null,
+    }
+
+4. create action "fetchUserStats"
+5. In "fetchUserStats" send get request to '/api/v1/users/me/activity'
+6. Get your response data in "then" and assign them to variable "stats"
+7. Create mutation called "setStats"
+8. call this mutation and provide "stats" data inside
+9. in "setStats" mutation assign "stats" to state
+TIP: You can assign it like this: Object.assign(state, {}, stats)
+10. Dispatch "fetchUserStats" in PageProfile created lifecycle
+11. verify in network tab and in VUEX extension that you are getting these data
 
 
 
