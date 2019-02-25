@@ -5,6 +5,8 @@ const Post = require('../models/posts');
 const Category = require('../models/categories');
 const passport = require('passport');
 
+// We were just debugging in this lecture (:
+
 exports.getUsers = function(req, res) {
   User.find({})
         .exec((errors, users) => {
