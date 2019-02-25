@@ -197,5 +197,11 @@ TIP: You can assign it like this: Object.assign(state, {}, stats)
 1. create "activeTab" in data() and assign to it string value "meetups"
 2. Follow tab TODOS
 
+####22#### Assignment
+1. Create new component called "UserUpdateModal"
+2. Provide template from resources
+3. Use this component instead of button "Update Info"
+4. Create functionality to open and close this modal
+
 
 
