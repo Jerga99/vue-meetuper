@@ -15,7 +15,8 @@
               <span class="title is-bold">{{user.name}}</span>
               <br/>
               <!-- Here will be user update functionality -->
-              <UserUpdateModal :authUser="user" />
+              <UserUpdateModal :authUser="user"
+                               @userSubmitted="updateUser" />
               <br/>
             </p>
             <!-- TODO: User info Here if any -->
@@ -163,6 +164,19 @@
     created () {
       this.$store.dispatch('stats/fetchUserStats')
         .then(stats => console.log(stats))
+    },
+    methods: {
+      updateUser ({user, done}) {
+        this.$store.dispatch('auth/updateUser', user)
+          .then(() => {
+            this.$toasted.success('Profile Successfuly Updated', {duration: 3000})
+            done()
+          })
+          .catch(err => {
+            console.log(err)
+            done()
+          })
+      }
     }
   }
 </script>

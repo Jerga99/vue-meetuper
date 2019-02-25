@@ -213,5 +213,20 @@ PREFERABLE WAY:
    so we will create copy of user
 3. bind user to inputs
 
+####24#### Assignment
+1. When "Save changes" button is clicked call function "emitUser"
+2. in "emitUser" emit event 'userSubmitted' with your
+   "user" and "done" callback function where you close modal
+3. in "PageProfile" when user is submitted dispatch action "auth/updateUser"
+4. Create action "updateUser" and expect to receive your user
+5. send  "patch" request to "/api/v1/users/:userId" and as
+   second value provide your user
+6. Get user from response and commit mutation "setAuthUser"
+   NOTE: maybe you need to change implementation and assign user to state
+         via Vue.set... if changes will be not refreshed in browser
+7. return user from "then" function
+8. in "PageProfile" display toast message "Profile Successfuly Updated"
+   and call "done" callback function to close modal
+9. provide also "catch". in case of error console log error and call "done"
 
 
