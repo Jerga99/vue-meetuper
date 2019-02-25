@@ -188,8 +188,10 @@ TIP: You can assign it like this: Object.assign(state, {}, stats)
 10. Dispatch "fetchUserStats" in PageProfile created lifecycle
 11. verify in network tab and in VUEX extension that you are getting these data
 
-
-
+####20#### Assignment
+1. Get your user, meetups, threads, posts, meetups count, threads count and posts count to PageProfile
+2. Follow TODO in template and display all data
+3. Don't implement functionaly related to tabs yet
 
 
 
