@@ -55,9 +55,9 @@
               Account
           </a>
           <div class="navbar-dropdown">
-            <a href="#" class="navbar-item">
+            <router-link :to="{name: 'PageProfile'}" class="navbar-item">
                 Profile
-            </a>
+            </router-link>
             <hr class="navbar-divider">
             <a @click.prevent="logout" class="navbar-item">
                 Logout

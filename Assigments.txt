@@ -153,7 +153,12 @@ NOTE: After post is created we want to add post to a thread, so we need to
  first find thread in items and then push created post to found thread.
 
 
-
+####18#### Assignment
+1. Create "PageProfile" you can find html and styles in resources of this lecture
+2. Create route to this page of path '/me'
+3. Allow only authenticated users to see this page
+4. Update link in navbar to navigate to profile page if clicked
+5. Navigate to this page (:
 
 
 
