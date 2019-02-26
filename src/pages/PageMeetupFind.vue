@@ -7,10 +7,10 @@
           <div class="level">
             <div class="level-left">
               <div class="level-item">
-                <input type="text" class="input" placeholder="New York">
+                <input v-model="searchedLocation" type="text" class="input" placeholder="New York">
               </div>
-              <div class="level-item">
-                <span>Meetups in New York, USA</span>
+              <div v-if="searchedLocation && meetups && meetups.length > 0" class="level-item">
+                <span>Meetups in {{meetups[0].location}}</span>
               </div>
             </div>
             <div class="level-right">
@@ -57,6 +57,11 @@
 
 <script>
   export default {
+    data () {
+      return {
+        searchedLocation: this.$store.getters['meta/location']
+      }
+    },
     computed: {
       meetups () {
         return this.$store.state.meetups.items
