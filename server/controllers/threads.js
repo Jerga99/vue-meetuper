@@ -12,6 +12,7 @@ exports.getThreads = function(req, res) {
         .where({'meetup': meetupId})
         .skip(parseInt(skips))
         .limit(parseInt(pageSize) + 1)
+        .sort({'createdAt': -1})
         .populate({
           path: 'posts',
           options: { limit: 5, sort: {'createdAt': -1}},

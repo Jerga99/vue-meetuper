@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import axiosInstance from '@/services/axios'
+import { applyFilters } from '@/helpers'
 
 export default {
   namespaced: true,
@@ -10,8 +11,10 @@ export default {
     items: []
   },
   actions: {
-    fetchThreads ({state, commit}, meetupId) {
-      return axios.get(`/api/v1/threads?meetupId=${meetupId}`)
+    fetchThreads ({state, commit}, {meetupId, filter = {}}) {
+      const url = applyFilters(`/api/v1/threads?meetupId=${meetupId}`, filter)
+
+      return axios.get(url)
         .then(res => {
           debugger
           const {threads, isAllDataLoaded} = res.data
