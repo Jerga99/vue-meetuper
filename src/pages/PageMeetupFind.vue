@@ -77,7 +77,6 @@
     },
     methods: {
       fetchMeetups () {
-
         if (this.searchedLocation) {
           this.filter['location'] = this.searchedLocation.toLowerCase().replace(/[\s,]+/g,'').trim()
         }
