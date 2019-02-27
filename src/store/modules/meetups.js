@@ -13,7 +13,6 @@ export default {
   actions: {
     fetchMeetups ({state, commit}, options = {}) {
       commit('setItems', {resource: 'meetups', items: []}, {root: true})
-      debugger
       const url = applyFilters('/api/v1/meetups', options.filter)
 
       return axios.get(url)

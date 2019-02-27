@@ -61,6 +61,12 @@
 
 <script>
   export default {
+    props: {
+      category: {
+        required: false,
+        type: String
+      }
+    },
     data () {
       return {
         searchedLocation: this.$store.getters['meta/location'],
@@ -79,6 +85,10 @@
       fetchMeetups () {
         if (this.searchedLocation) {
           this.filter['location'] = this.searchedLocation.toLowerCase().replace(/[\s,]+/g,'').trim()
+        }
+
+        if (this.category) {
+          this.filter['category'] = this.category
         }
 
         this.$store.dispatch('meetups/fetchMeetups', {filter: this.filter})
