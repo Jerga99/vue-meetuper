@@ -234,7 +234,18 @@ PREFERABLE WAY:
 2. Create route to this page with path of '/meetups/:meetupId/edit'
 3. in created lifecycle function console log meetupId from route params
 
+####26#### Assignment
+1. Create "updateMeetup" action and expect to get meetupData
+2. send "patch" request to "/api/v1/meetups/:meuetpId" and send along meetup data
+3. Get meetup from response and commit mutation "mergeMeetup" and send along your updated meetup
+4. in "mergeMeetup" assign to state.item your old values from state.item with new ones of your updated meetup
+5. return meetup from "then" function
+6. in "PageMeetupEdit" change some values and when user click "update" button
+   dispatch action to "updateMeetup"
+7. display toast message when meetup is succesfuly updated
+8. Refresh page to verify changes were applied
 
+NOTE: proccess location
 
 
 

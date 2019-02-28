@@ -31,8 +31,8 @@
         </div>
         <div class="is-pulled-right">
           <!-- Update Button -->
-          <button
-            class="button is-success is-large">Update</button>
+          <button @click="updateMeetupHandler"
+                  class="button is-success is-large">Update</button>
         </div>
       </div>
     </section>
@@ -115,7 +115,7 @@
   import Datepicker from 'vuejs-datepicker'
   import VueTimepicker from 'vue2-timepicker'
   import {mapActions} from 'vuex'
-
+  import moment from 'moment'
   export default {
     components: {
       Datepicker,
@@ -161,13 +161,20 @@
       this.fetchMeetupByIdHandler()
     },
     methods: {
-      ...mapActions('meetups', ['fetchMeetupById']),
+      ...mapActions('meetups', ['fetchMeetupById', 'updateMeetup']),
       fetchMeetupByIdHandler () {
         this.fetchMeetupById(this.meetupId)
           .then(meetup => {
             if (meetup.meetupCreator._id !== this.authUser._id) {
               this.$router.push({path: '/not-authorized'})
             }
+          })
+          .catch(err => console.log(err))
+      },
+      updateMeetupHandler () {
+        this.updateMeetup(this.meetup)
+          .then(() => {
+            this.$toasted.success('Meetup Succesfuly Updated!', {duration: 3000})
           })
           .catch(err => console.log(err))
       },
