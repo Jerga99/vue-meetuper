@@ -104,15 +104,47 @@
 </template>
 
 <script>
+  import Datepicker from 'vuejs-datepicker'
+  import VueTimepicker from 'vue2-timepicker'
+  import {mapActions} from 'vuex'
+
   export default {
+    components: {
+      Datepicker,
+      VueTimepicker
+    },
     props: {
       meetupId: {
         required: true,
         type: String
       }
     },
+    computed: {
+      meetup () {
+        return this.$store.state.meetups.item
+      },
+      meetupCreator () {
+        return this.meetup.meetupCreator
+      },
+      authUser () {
+        return this.$store.state.auth.user
+      }
+    },
     created () {
-      console.log(this.meetupId)
+      this.fetchMeetupByIdHandler()
+    },
+    methods: {
+      ...mapActions('meetups', ['fetchMeetupById']),
+      fetchMeetupByIdHandler () {
+        this.fetchMeetupById(this.meetupId)
+          .then(meetup => {
+            debugger
+            if (meetup.meetupCreator._id !== this.authUser._id) {
+              this.$router.push({path: '/not-authorized'})
+            }
+          })
+          .catch(err => console.log(err))
+      }
     }
   }
 </script>
