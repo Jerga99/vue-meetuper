@@ -6,8 +6,7 @@ exports.getSecret = function (req, res) {
 }
 
 exports.getMeetups = function(req, res) {
-  const {category} = req.query || {};
-  const {location} = req.query || {}
+  const {category, location} = req.query;
 
   const findQuery = location ? Meetup.find({ processedLocation: { $regex: '.*' + location + '.*' } })
                              : Meetup.find({})

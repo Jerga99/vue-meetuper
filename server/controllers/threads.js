@@ -3,15 +3,15 @@ const Thread = require('../models/threads');
 exports.getThreads = function(req, res) {
   const meetupId = req.query.meetupId;
 
-  const pageSize = req.query.pageSize || 5;
-  const pageNum = req.query.pageNum || 1;
+  const pageSize = parseInt(req.query.pageSize) || 5;
+  const pageNum = parseInt(req.query.pageNum) || 1;
 
   const skips = pageSize * (pageNum - 1)
 
   Thread.find({})
         .where({'meetup': meetupId})
-        .skip(parseInt(skips))
-        .limit(parseInt(pageSize) + 1)
+        .skip(skips)
+        .limit(pageSize + 1)
         .sort({'createdAt': -1})
         .populate({
           path: 'posts',
