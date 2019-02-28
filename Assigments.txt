@@ -229,4 +229,19 @@ PREFERABLE WAY:
    and call "done" callback function to close modal
 9. provide also "catch". in case of error console log error and call "done"
 
+####25#### Assignment
+1. Create Page "PageMeetupEdit" with html and styles from resources
+2. Create route to this page with path of '/meetups/:meetupId/edit'
+3. in created lifecycle function console log meetupId from route params
+
+
+
+
+
+
+
+
+
+
+
 
