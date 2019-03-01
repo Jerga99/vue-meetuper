@@ -97,6 +97,7 @@ exports.leaveMeetup = function (req, res) {
     .catch(errors => res.status(422).send({errors}))
 }
 
+// We were just debugging in this lecture (:
 exports.updateMeetup = function (req, res) {
   const meetupData = req.body
   const {id} = req.params
