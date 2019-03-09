@@ -1,4 +1,9 @@
-# vue-meetup-starter
+# vue-meetuper
+
+## Note
+
+Don't forget to setup DB and dev.js folder. Instructions you can find in lesson 52(Database Setup)
+
 
 ## Project setup
 ```
