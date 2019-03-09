@@ -1,4 +1,4 @@
-# vue-meetuper
+# Complete Project 3 vue-meetuper
 
 ## Note
 
