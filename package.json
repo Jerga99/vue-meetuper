@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "npm run start --prefix server"
+    "start": "npm run start --prefix server",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "algoliasearch": "^3.32.0",

@@ -16,6 +16,13 @@ const path = require('path');
 
 // store.on('error', (error) => console.log(error))
 
+
+// 1. package.json add heroku script CHECKED
+// 2. change sockets url CHECKED
+// 3. change location by ip address CHECKED
+// 4. create ENV variables in Vue CHECKED
+// 5. Create ENV variables on Heroku CHECKED
+
 require("./models/meetups");
 require("./models/users");
 require("./models/threads");

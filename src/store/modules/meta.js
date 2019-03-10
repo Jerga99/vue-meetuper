@@ -17,7 +17,7 @@ export default {
     }
   },
   actions: {
-    fetchMetaData ({commit, state}) {
+    fetchMetaData ({commit}) {
       return axios.get('/api/v1')
         .then(res => {
           const meta = res.data
