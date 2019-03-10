@@ -6,7 +6,7 @@ const Thread = require('./models/threads');
 const Category = require('./models/categories')
 
 const data = require('./data.js');
-const config = require('./config/dev');
+const config = require('./config');
 
 class DB {
   constructor() {

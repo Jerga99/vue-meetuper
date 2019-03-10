@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const Meetup = require('./meetups');
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
-const config = require('../config/dev')
+const config = require('../config')
 
 const userSchema = new Schema({
   avatar: String,
