@@ -55,84 +55,99 @@
       <!-- TODO: Display this div when activeTab === 'meetups' -->
       <div v-if="activeTab === 'meetups'" class="columns is-mobile is-multiline">
         <!-- TODO: Iterate over meetups -->
-        <div v-for="meetup in meetups" :key="meetup._id" class="column is-3-tablet is-6-mobile">
-          <!-- MEETUPS -->
-          <div class="card">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <!-- TODO: Display Meetup Image -->
-                <img :src="meetup.image"/>
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <!-- TODO: Display Meetup title -->
-                  <p class="title is-4">{{meetup.title}}</p>
-                  <!-- TODO: Display Category name -->
-                  <p class="subtitle is-6">
-                    <span class="tag is-dark subtitle">{{meetup.category.name | capitalize}}</span>
+        <template v-if="meetups && meetups.length > 0">
+          <div v-for="meetup in meetups" :key="meetup._id" class="column is-3-tablet is-6-mobile">
+            <!-- MEETUPS -->
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <!-- TODO: Display Meetup Image -->
+                  <img :src="meetup.image"/>
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <!-- TODO: Display Meetup title -->
+                    <p class="title is-4">{{meetup.title}}</p>
+                    <!-- TODO: Display Category name -->
+                    <p class="subtitle is-6">
+                      <span class="tag is-dark subtitle">{{meetup.category.name | capitalize}}</span>
+                    </p>
+                  </div>
+                </div>
+                <div class="content">
+                  <!-- TODO: Display Meetup shortInfo -->
+                  <p>
+                    {{meetup.shortInfo}}
                   </p>
                 </div>
               </div>
-              <div class="content">
-                <!-- TODO: Display Meetup shortInfo -->
-                <p>
-                  {{meetup.shortInfo}}
-                </p>
-              </div>
+              <footer class="card-footer">
+                <router-link :to="{name: 'PageMeetupEdit', params: {meetupId: meetup._id}}" class="card-footer-item">Edit</router-link>
+                <a @click.prevent="($event) => showDeleteMeetupWarning($event, meetup._id)"
+                   class="card-footer-item delete-item">Delete</a>
+              </footer>
             </div>
-            <footer class="card-footer">
-              <router-link :to="{name: 'PageMeetupEdit', params: {meetupId: meetup._id}}" class="card-footer-item">Edit</router-link>
-              <a @click.prevent="($event) => showDeleteMeetupWarning($event, meetup._id)"
-                 class="card-footer-item delete-item">Delete</a>
-            </footer>
+            <br/>
           </div>
-          <br/>
+        </template>
+        <div v-else class="stats-error">
+          No meetups currently created :(
         </div>
       </div>
       <!-- TODO: Display this div when activeTab === 'threads' -->
       <div v-if="activeTab === 'threads'" class="columns is-mobile is-multiline">
         <!-- TODO: Iterate over threads -->
-        <div v-for="thread in threads" :key="thread._id" class="column is-3-tablet is-6-mobile">
+        <template v-if="threads && threads.length > 0">
+          <div v-for="thread in threads" :key="thread._id" class="column is-3-tablet is-6-mobile">
           <!-- THREADS -->
-          <div class="card">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <!-- TODO: Display thread thread title -->
-                  <p class="title is-4">{{thread.title}}</p>
+            <div class="card">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <!-- TODO: Display thread thread title -->
+                    <p class="title is-4">{{thread.title}}</p>
+                  </div>
                 </div>
               </div>
+              <footer class="card-footer">
+                <a class="card-footer-item">Share</a>
+                <a class="card-footer-item">Delete</a>
+              </footer>
             </div>
-            <footer class="card-footer">
-              <a class="card-footer-item">Share</a>
-              <a class="card-footer-item">Delete</a>
-            </footer>
+            <br/>
           </div>
-          <br/>
+        </template>
+        <div v-else class="stats-error">
+           No Threads currently created :(
         </div>
       </div>
       <!-- TODO: Display this div when activeTab === 'posts' -->
       <div v-if="activeTab === 'posts'" class="columns is-mobile is-multiline">
         <!-- TODO: Iterate over posts -->
-        <div v-for="post in posts" :key="post._id" class="column is-3-tablet is-6-mobile">
+        <template v-if="posts && posts.length > 0">
+          <div v-for="post in posts" :key="post._id" class="column is-3-tablet is-6-mobile">
           <!-- POSTS -->
-          <div class="card">
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <!-- TODO: Display post text -->
-                  <p class="title is-4">{{post.text}}</p>
+            <div class="card">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-content">
+                    <!-- TODO: Display post text -->
+                    <p class="title is-4">{{post.text}}</p>
+                  </div>
                 </div>
               </div>
+              <footer class="card-footer">
+                <a class="card-footer-item">Share</a>
+                <a class="card-footer-item">Delete</a>
+              </footer>
             </div>
-            <footer class="card-footer">
-              <a class="card-footer-item">Share</a>
-              <a class="card-footer-item">Delete</a>
-            </footer>
+            <br/>
           </div>
-          <br/>
+        </template>
+        <div v-else class="stats-error">
+          No posts currently created :(
         </div>
       </div>
     </div>
@@ -195,6 +210,12 @@
 <style scoped>
   body {
     background: #F5F7FA
+  }
+
+  .stats-error {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 30px;
   }
 
   .delete-item {
