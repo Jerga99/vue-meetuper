@@ -72,6 +72,13 @@ export default {
           commit('mergeMeetup', updatedMeetup)
           return state.item
         })
+    },
+    deleteMeetup ({}, meetupId) {
+      return axiosInstance.delete(`/api/v1/meetups/${meetupId}`)
+        .then((res) => {
+          const meetupId = res.data
+          return meetupId
+        })
     }
   },
   mutations: {

@@ -183,7 +183,9 @@
         const isConfirm = confirm('Are you sure you want to delete this meetup???')
 
         if (isConfirm) {
-          console.log('Deleteing meetup!')
+          this.$store.dispatch('meetups/deleteMeetup', meetupId)
+            .then(id => console.log(id))
+            .catch(err => console.log(err))
         }
       }
     }
