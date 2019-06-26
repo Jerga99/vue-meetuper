@@ -84,7 +84,8 @@
             </div>
             <footer class="card-footer">
               <router-link :to="{name: 'PageMeetupEdit', params: {meetupId: meetup._id}}" class="card-footer-item">Edit</router-link>
-              <a class="card-footer-item">Delete</a>
+              <a @click.prevent="($event) => showDeleteMeetupWarning($event, meetup._id)"
+                 class="card-footer-item delete-item">Delete</a>
             </footer>
           </div>
           <br/>
@@ -176,6 +177,14 @@
             console.log(err)
             done()
           })
+      },
+      showDeleteMeetupWarning(e, meetupId) {
+        e.stopPropagation()
+        const isConfirm = confirm('Are you sure you want to delete this meetup???')
+
+        if (isConfirm) {
+          console.log('Deleteing meetup!')
+        }
       }
     }
   }
@@ -184,6 +193,10 @@
 <style scoped>
   body {
     background: #F5F7FA
+  }
+
+  .delete-item {
+    color: red;
   }
 
   .stats-tab {
