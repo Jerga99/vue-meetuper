@@ -73,7 +73,7 @@ export default {
           return state.item
         })
     },
-    deleteMeetup ({}, meetupId) {
+    deleteMeetup (_, meetupId) {
       return axiosInstance.delete(`/api/v1/meetups/${meetupId}`)
         .then((res) => {
           const meetupId = res.data

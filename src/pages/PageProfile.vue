@@ -184,7 +184,7 @@
 
         if (isConfirm) {
           this.$store.dispatch('meetups/deleteMeetup', meetupId)
-            .then(id => console.log(id))
+            .then(id => this.$store.dispatch('stats/updateStats', id))
             .catch(err => console.log(err))
         }
       }

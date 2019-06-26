@@ -25,11 +25,24 @@ export default {
           commit('setStats', stats)
           return stats
         })
+    },
+    updateStats ({state, commit}, meetupId) {
+      commit('deleteMeetup', meetupId)
     }
   },
   mutations: {
     setStats (state, stats) {
       return Object.assign(state, {}, stats)
+    },
+    deleteMeetup (state, meetupId) {
+      const index = state.meetups.data.findIndex(meetup => meetup._id === meetupId)
+      state.meetups.data.splice(index, 1)
+      state.meetups.count--
     }
   }
 }
+
+
+
+
+
