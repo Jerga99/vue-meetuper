@@ -122,6 +122,30 @@ exports.updateMeetup = function (req, res) {
 }
 
 
+exports.deleteMeetup = function(req, res) {
+  const {id} = req.params;
+  const user = req.user;
+
+  Meetup.findById(id, (errors, meetup) => {
+    if (errors) {
+      return res.status(422).send({errors})
+    }
+
+    if (meetup.meetupCreator != user.id) {
+      return res.status(401).send({errors: {message: 'Not Authorized!'}})
+    }
+
+    meetup.remove((errors, _) => {
+      if (errors) {
+        return res.status(422).send({errors})
+      }
+
+      return res.json(meetup._id);
+    })
+  })
+}
+
+
 
 
 
