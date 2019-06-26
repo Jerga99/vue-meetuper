@@ -27,17 +27,27 @@ export default {
         })
     },
     updateStats ({state, commit}, meetupId) {
-      commit('deleteMeetup', meetupId)
+      commit('deleteResource', {resource: 'meetups', itemId: meetupId})
+
+      state.threads.data.filter(thread => {
+        return thread.meetup === meetupId
+      }).flatMap(thread => {
+        commit('deleteResource', {resource: 'threads', itemId: thread._id})
+        return thread.posts
+      }).map(postId => {
+        commit('deleteResource', {resource: 'posts', itemId: postId})
+      })
+
     }
   },
   mutations: {
     setStats (state, stats) {
       return Object.assign(state, {}, stats)
     },
-    deleteMeetup (state, meetupId) {
-      const index = state.meetups.data.findIndex(meetup => meetup._id === meetupId)
-      state.meetups.data.splice(index, 1)
-      state.meetups.count--
+    deleteResource (state, {resource, itemId}) {
+      const index = state[resource].data.findIndex(item => item._id === itemId)
+      state[resource].data.splice(index, 1)
+      state[resource].count--
     }
   }
 }
