@@ -8,7 +8,13 @@ export default {
 
   state: {
     items: [],
-    item: {}
+    item: {},
+    pagination: {
+      count: 0,
+      pageCount: 0,
+      pageSize: 6,
+      pageNum: 1
+    }
   },
   actions: {
     fetchMeetups ({state, commit}, options = {}) {
@@ -17,8 +23,9 @@ export default {
 
       return axios.get(url)
         .then(res => {
-          const { meetups } = res.data
+          const { meetups, count, pageCount } = res.data
           commit('setItems', {resource: 'meetups', items: meetups}, {root: true})
+          commit('setPagination', {count, pageCount})
           return state.items
         })
     },
@@ -87,6 +94,10 @@ export default {
     },
     mergeMeetup (state, updatedMeetup) {
       state.item = {...state.item, ...updatedMeetup}
+    },
+    setPagination (state, {count, pageCount}) {
+      Vue.set(state.pagination, 'count', count)
+      Vue.set(state.pagination, 'pageCount', pageCount)
     }
   }
 }

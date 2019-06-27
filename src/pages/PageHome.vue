@@ -21,8 +21,8 @@
                     :meetup="meetup" />
       </div>
       <paginate
-        :page-count="5"
-        :click-handler="() => {}"
+        :page-count="pagination.pageCount"
+        :click-handler="(page) => {}"
         :prev-text="'Prev'"
         :next-text="'Next'"
         :container-class="'paginationContainer'">
@@ -65,7 +65,8 @@
       }),
       ...mapState({
         meetups: state => state.meetups.items,
-        categories: state => state.categories.items
+        categories: state => state.categories.items,
+        pagination: state => state.meetups.pagination
       })
     },
     created () {
