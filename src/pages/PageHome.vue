@@ -22,7 +22,7 @@
       </div>
       <paginate
         :page-count="pagination.pageCount"
-        :click-handler="(page) => {}"
+        :click-handler="fetchPaginatedMeetups"
         :prev-text="'Prev'"
         :next-text="'Next'"
         :container-class="'paginationContainer'">
@@ -70,12 +70,8 @@
       })
     },
     created () {
-      const filter = {}
-      // if (this.ipLocation) {
-      //   filter['location'] = processLocation(this.ipLocation)
-      // }
 
-      Promise.all([this.fetchMeetups({filter}), this.fetchCategories()])
+      Promise.all([this.handleFetchMeetups({}), this.fetchCategories()])
         .then(() => this.pageLoader_resolveData())
         .catch((err) => {
           console.error(err)
@@ -84,7 +80,21 @@
     },
     methods: {
       ...mapActions('meetups', ['fetchMeetups']),
-      ...mapActions('categories', ['fetchCategories'])
+      ...mapActions('categories', ['fetchCategories']),
+      handleFetchMeetups ({reset}) {
+        const filter = {}
+        filter['pageSize'] = this.pagination.pageSize
+        filter['pageNum'] = this.pagination.pageNum
+
+        return this.fetchMeetups({filter, reset})
+      },
+      fetchPaginatedMeetups (page) {
+        this.setPage(page)
+        this.handleFetchMeetups({reset: false})
+      },
+      setPage (page) {
+        this.$store.commit('meetups/setPage', page)
+      }
     }
   }
 </script>

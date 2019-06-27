@@ -12,13 +12,15 @@ export default {
     pagination: {
       count: 0,
       pageCount: 0,
-      pageSize: 6,
+      pageSize: 2,
       pageNum: 1
     }
   },
   actions: {
-    fetchMeetups ({state, commit}, options = {}) {
-      commit('setItems', {resource: 'meetups', items: []}, {root: true})
+    fetchMeetups ({state, commit}, options = {reset: true}) {
+      if (options.reset) {
+        commit('setItems', {resource: 'meetups', items: []}, {root: true})
+      }
       const url = applyFilters('/api/v1/meetups', options.filter)
 
       return axios.get(url)
@@ -98,6 +100,9 @@ export default {
     setPagination (state, {count, pageCount}) {
       Vue.set(state.pagination, 'count', count)
       Vue.set(state.pagination, 'pageCount', pageCount)
+    },
+    setPage (state, page) {
+      Vue.set(state.pagination, 'pageNum', page)
     }
   }
 }
