@@ -12,7 +12,7 @@ export default {
     pagination: {
       count: 0,
       pageCount: 0,
-      pageSize: 2,
+      pageSize: 6,
       pageNum: 1
     }
   },
@@ -88,6 +88,10 @@ export default {
           const meetupId = res.data
           return meetupId
         })
+    },
+    initializePagesFromQuery({commit}, {pageSize, pageNum}) {
+      commit('setPage', pageNum)
+      commit('setPageSize', pageSize)
     }
   },
   mutations: {
@@ -103,6 +107,9 @@ export default {
     },
     setPage (state, page) {
       Vue.set(state.pagination, 'pageNum', page)
+    },
+    setPageSize (state, pageSize) {
+      Vue.set(state.pagination, 'pageSize', pageSize)
     }
   }
 }

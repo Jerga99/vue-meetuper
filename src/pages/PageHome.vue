@@ -21,6 +21,7 @@
                     :meetup="meetup" />
       </div>
       <paginate
+        v-model="pagination.pageNum"
         :page-count="pagination.pageCount"
         :click-handler="fetchPaginatedMeetups"
         :prev-text="'Prev'"
@@ -70,6 +71,11 @@
       })
     },
     created () {
+      const {pageSize, pageNum} = this.$route.query
+
+      if (pageSize && pageNum) {
+        this.initializePagesFromQuery({pageSize, pageNum})
+      }
 
       Promise.all([this.handleFetchMeetups({}), this.fetchCategories()])
         .then(() => this.pageLoader_resolveData())
@@ -79,14 +85,14 @@
         })
     },
     methods: {
-      ...mapActions('meetups', ['fetchMeetups']),
+      ...mapActions('meetups', ['fetchMeetups', 'initializePagesFromQuery']),
       ...mapActions('categories', ['fetchCategories']),
       handleFetchMeetups ({reset}) {
         const filter = {}
         filter['pageSize'] = this.pagination.pageSize
         filter['pageNum'] = this.pagination.pageNum
 
-        return this.fetchMeetups({filter, reset})
+        return this.fetchMeetups({filter, reset}).then(_ => this.setQueryPaginationParams())
       },
       fetchPaginatedMeetups (page) {
         this.setPage(page)
@@ -94,6 +100,10 @@
       },
       setPage (page) {
         this.$store.commit('meetups/setPage', page)
+      },
+      setQueryPaginationParams() {
+        const { pageSize, pageNum } = this.pagination
+        this.$router.push({query: {pageNum, pageSize}})
       }
     }
   }
