@@ -17,7 +17,7 @@ export default {
 
       return axios.get(url)
         .then(res => {
-          const meetups = res.data
+          const { meetups } = res.data
           commit('setItems', {resource: 'meetups', items: meetups}, {root: true})
           return state.items
         })

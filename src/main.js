@@ -10,12 +10,14 @@ import filters from './filters'
 import AppDropdown from './components/shared/AppDropdown'
 import AppHero from './components/shared/AppHero'
 import AppSpinner from './components/shared/AppSpinner'
+import Paginate from 'vuejs-paginate'
 
 Vue.config.productionTip = false
 
 Vue.component('AppHero', AppHero)
 Vue.component('AppDropdown', AppDropdown)
 Vue.component('AppSpinner', AppSpinner)
+Vue.component('paginate', Paginate)
 
 Vue.use(vuelidate)
 Vue.use(Toasted)
