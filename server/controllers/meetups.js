@@ -8,26 +8,36 @@ exports.getSecret = function (req, res) {
 exports.getMeetups = function(req, res) {
   const {category, location} = req.query;
 
+  // Page Setup
+  const pageSize = parseInt(req.query.pageSize) || 6;
+  const pageNum = parseInt(req.query.pageNum) || 1;
+  const skips = pageSize * (pageNum - 1);
+
   const findQuery = location ? Meetup.find({ processedLocation: { $regex: '.*' + location + '.*' } })
                              : Meetup.find({})
+
   findQuery
         .populate('category')
         .populate('joinedPeople')
-        .limit(10)
+        .skip(skips)
+        .limit(pageSize)
         .sort({'createdAt': -1})
         .exec((errors, meetups) => {
     if (errors) {
       return res.status(422).send({errors});
     }
 
-    // WARNING: requires improvement, can decrease performance
     if (category) {
       meetups = meetups.filter(meetup => {
         return meetup.category.name === category
       })
     }
 
-    return res.json(meetups);
+    Meetup.count({})
+      .then(count => {
+
+        return res.json({meetups: meetups.splice(0, pageSize), count, pageCount: count / pageSize});
+      });
   });
 }
 
