@@ -12,7 +12,7 @@ export default {
     pagination: {
       count: 0,
       pageCount: 0,
-      pageSize: 6,
+      pageSize: 3,
       pageNum: 1
     }
   },

@@ -31,7 +31,7 @@
           </div>
           <div class="content">
               <!-- get here meetup description -->
-              {{meetup.description}}
+              {{shorten(meetup.description)}}
               <div class="background-icon"><span class="icon-barcode"></span></div>
           </div>
         </div>
@@ -46,6 +46,11 @@
       meetup: {
         required: true,
         type: Object
+      }
+    },
+    methods: {
+      shorten(text) {
+        return text.substr(0, 144) + ' ...'
       }
     }
   }
