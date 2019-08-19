@@ -42,6 +42,23 @@ function sendConfirmationEmail({toUser, hash}, callback) {
   })
 }
 
+exports.activateUser = function(req, res) {
+  const { hash } = req.params
+
+  ConfirmationHash
+    .findById(hash)
+    .populate('user')
+    .exec((errors, foundHash) => {
+      if (errors) { return res.status(422).send({errors}); }
+
+      User.findByIdAndUpdate(foundHash.user.id, { $set: {active: true}}, { new: true}, (errors, updatedUser) => {
+        if (errors) { return res.status(422).send({errors}); }
+
+        return res.json(updatedUser);
+      })
+    })
+}
+
 
 exports.getUsers = function(req, res) {
   User.find({})

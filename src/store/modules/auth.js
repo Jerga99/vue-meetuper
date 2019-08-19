@@ -52,19 +52,9 @@ export default {
         .catch(err => rejectError(err))
     },
     activateUser (_, hash) {
-      alert(`Sending request with hash: ${hash}`)
+      return axios.patch(`/api/v1/users/${hash}/activate`)
     },
     logout ({commit}) {
-      // For Session Authnetication !
-      // return axios.post('/api/v1/users/logout')
-      //   .then(() => {
-      //     commit('setAuthUser', null)
-      //     return true
-      //   })
-      //   .catch(err => {
-      //     return err
-      //   })
-
       return new Promise((resolve) => {
         localStorage.removeItem('meetuper-jwt')
         commit('setAuthUser', null)
