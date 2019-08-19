@@ -3,6 +3,7 @@ const Meetup = require('../models/meetups');
 const Thread = require('../models/threads');
 const Post = require('../models/posts');
 const Category = require('../models/categories');
+const ConfirmationHash = require('../models/confirmation-hash');
 const passport = require('passport');
 
 // We were just debugging in this lecture (:
@@ -64,11 +65,13 @@ exports.register = function(req, res) {
   const user = new User(registerData);
 
   return user.save((errors, savedUser) => {
-    if (errors) {
-      return res.status(422).json({errors})
-    }
+    if (errors) { return res.status(422).json({errors}) };
+    const hash = new ConfirmationHash({ user: savedUser });
 
-    return res.json(savedUser)
+    hash.save((errors, createdHash) => {
+      if (errors) { return res.status(422).json({errors}) };
+      return res.json(savedUser)
+    })
   })
 }
 
@@ -99,15 +102,13 @@ exports.login = function (req, res, next) {
     }
 
     if (passportUser) {
-      // Only For Session Auth!!!
-      // req.login(passportUser, function (err) {
-      //   if (err) { next(err); }
-
-      //   return res.json(passportUser)
-      // });
-
-      return res.json(passportUser.toAuthJSON())
-
+      if (passportUser.active) {
+        return res.json(passportUser.toAuthJSON())
+      } else {
+        return res.status(422).send({errors: {
+          'message': 'Please check your email in order to activate account'
+        }})
+      }
     } else {
       return res.status(422).send({errors: {
         'message': 'Invalid password or email'

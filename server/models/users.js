@@ -24,6 +24,7 @@ const userSchema = new Schema({
     maxlength: [32, 'Too long, max is 32 characters'],
     required: 'Password is required'
   },
+  active: { type: Boolean, default: false },
   info: String,
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
