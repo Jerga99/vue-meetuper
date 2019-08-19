@@ -11,6 +11,7 @@ import PageLogin from '@/pages/PageLogin'
 import PageRegister from '@/pages/PageRegister'
 import PageSecret from '@/pages/PageSecret'
 import PageProfile from '@/pages/PageProfile'
+import PageActivateUser from '@/pages/PageActivateUser'
 
 import PageNotFound from '@/pages/PageNotFound'
 import PageNotAuthenticated from '@/pages/PageNotAuthenticated'
@@ -75,6 +76,12 @@ const router = new Router({
       path: '/register',
       name: 'PageRegister',
       component: PageRegister,
+      meta: { onlyGuestUser: true }
+    },
+    {
+      path: '/users/:hash/activate',
+      name: 'PageActivateUser',
+      component: PageActivateUser,
       meta: { onlyGuestUser: true }
     },
     {

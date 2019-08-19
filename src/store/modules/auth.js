@@ -51,6 +51,9 @@ export default {
       return axios.post('/api/v1/users/register', userData)
         .catch(err => rejectError(err))
     },
+    activateUser (_, hash) {
+      alert(`Sending request with hash: ${hash}`)
+    },
     logout ({commit}) {
       // For Session Authnetication !
       // return axios.post('/api/v1/users/logout')
