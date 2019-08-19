@@ -53,6 +53,7 @@ exports.activateUser = function(req, res) {
 
       User.findByIdAndUpdate(foundHash.user.id, { $set: {active: true}}, { new: true}, (errors, updatedUser) => {
         if (errors) { return res.status(422).send({errors}); }
+        foundHash.remove(() => {})
 
         return res.json(updatedUser);
       })
