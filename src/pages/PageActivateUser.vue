@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { USER_ACTIVATED } from '@/helpers/redirectMessages'
 export default {
   created() {
     this.activateUser()
@@ -20,7 +21,7 @@ export default {
     activateUser() {
       const { hash } = this.$route.params
       this.$store.dispatch('auth/activateUser', hash)
-        .then(_ => this.$router.push('/login'))
+        .then(_ => this.$router.push({path: '/login', query: { messageType: USER_ACTIVATED.type}}))
         .catch(err => console.log(err))
     }
   }

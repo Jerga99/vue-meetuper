@@ -106,6 +106,7 @@
 <script>
   import { required, email, minLength, url, sameAs } from 'vuelidate/lib/validators'
   import { supportedFileType } from '@/helpers/validators'
+  import { USER_REGISTERED } from '@/helpers/redirectMessages'
   export default {
     data () {
       return {
@@ -149,7 +150,8 @@
       register () {
         this.$v.form.$touch()
         this.$store.dispatch('auth/registerUser', this.form)
-          .then(() => this.$router.push('/login'))
+          .then(() => {
+            this.$router.push({path: '/login', query: { messageType: USER_REGISTERED.type}})})
           .catch(errMessage => {
             this.$toasted.error(errMessage, {duration: 5000})
           })

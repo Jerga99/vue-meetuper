@@ -56,6 +56,7 @@
 
 <script>
   import { required, email } from 'vuelidate/lib/validators'
+  import { REDIRECT_MESSAGES } from '@/helpers/redirectMessages'
   export default {
     data () {
       return {
@@ -80,6 +81,14 @@
       isFormInvalid () {
         return this.$v.form.$invalid
       }
+    },
+    created() {
+      const { messageType } = this.$route.query
+      if (!messageType) return
+
+      const { message } = REDIRECT_MESSAGES[messageType]
+      this.$toasted.success(message, {duration: 3000})
+      this.$router.push({query: ''})
     },
     methods: {
       login () {
